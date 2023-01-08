@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ProcessorSimulator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            // Komunikacja z uzytkownikiem
+
+            Console.Write("Witaj użytkowniku");
+            Console.Read();
+            Console.Clear();
+            Console.Write("Witaj użytkowniku");
+            Console.Read();
+            // Tworzymy obiekt klasy Processor
+            Processor processor = new Processor();
+
+            // Ustawiamy rejestry na początkowe wartości
+            processor.AX = 2;
+            processor.BX = 1;
+            processor.CX = 4;
+            processor.DX = 2;
+
+            // Symulujemy wykonanie kilku instrukcji
+            processor.AX = processor.BX + processor.CX;
+            processor.DX = processor.AX - processor.BX;
+            processor.CX = processor.DX * processor.AX;
+
+            // Wypisujemy wartości rejestrów na ekran
+            Console.WriteLine("AX: " + processor.AX);
+            Console.WriteLine("BX: " + processor.BX);
+            Console.WriteLine("CX: " + processor.CX);
+            Console.WriteLine("DX: " + processor.DX);
+        }
+    }
+
+    // Klasa reprezentująca procesor
+    class Processor
+    {
+        // Rejestry procesora
+        public int AX { get; set; }
+        public int BX { get; set; }
+        public int CX { get; set; }
+        public int DX { get; set; }
+    }
+}
