@@ -12,19 +12,27 @@ namespace ProcessorSimulator
 
             // Komunikacja z uzytkownikiem
 
-            Console.Write("Witaj użytkowniku");
-            Console.Read();
+            Console.WriteLine("Witaj użytkowniku jak mam się do Ciebie zwracać?");
+            Console.WriteLine("(Każdą odpowiedź zatwierdź enterem)");
+            string name = Console.ReadLine();
             Console.Clear();
-            Console.Write("Witaj użytkowniku");
-            Console.Read();
+            Console.Write($"Witaj {name} przedstawię Ci prostą symulacje procesora 8086");
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine($"{name} wybierz teraz wartości poszczególnych zasobów");
+            Console.WriteLine($"(Aby tego dokonać musisz zmiamić przypisane bazowo wartości w kodzie, cztery wartości, oto kolejność:)\nAX \nBX \nCX \nDX\nBazowo wartości są wybierane losowo");
+            Console.ReadLine();
+            Console.Clear();
+
             // Tworzymy obiekt klasy Processor
             Processor processor = new Processor();
 
             // Ustawiamy rejestry na początkowe wartości
-            processor.AX = 2;
-            processor.BX = 1;
-            processor.CX = 4;
-            processor.DX = 2;
+            Random random = new Random();
+            processor.AX = random.Next(1, 100);
+            processor.BX = random.Next(1, 100);
+            processor.CX = random.Next(1, 100);
+            processor.DX = random.Next(1, 100);
 
             // Symulujemy wykonanie kilku instrukcji
             processor.AX = processor.BX + processor.CX;
